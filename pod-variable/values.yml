@@ -1,0 +1,4 @@
+pod:
+  name: my-pod1
+  image: nginx
+  port: 80
