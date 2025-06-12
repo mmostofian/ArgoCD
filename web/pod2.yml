@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod2
+  name: {{ .Values.pod.name }}
 spec:
   containers:
     - name: my-container
-      image: nginx
+      image: {{ .Values.pod.image }}
       ports:
-       - containerPort: {{ .pod.port }}
+        - containerPort: {{ .pod.port }}
