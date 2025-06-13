@@ -7,4 +7,4 @@ spec:
     - name: my-container
       image: nginx
       ports:
-        - containerPort: {{ .pod.port }}
+        - containerPort: 80
