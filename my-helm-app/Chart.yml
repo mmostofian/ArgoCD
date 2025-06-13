@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v1
 name: my-helm-app
 description: A simple Helm chart for a Pod
 version: 0.1.0
