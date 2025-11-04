@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-busybox-deployment
+  namespace: argotest
+  labels:
+    app: nginx-busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-busybox
+  template:
+    metadata:
+      labels:
+        app: nginx-busybox
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      - name: busybox
+        image: busybox
+        command: ["sleep", "3600"]
+        volumeMounts:
+        - mountPath: /data
+          name: busybox-storage
+      volumes:
+      - name: busybox-storage
+        persistentVolumeClaim:
+          claimName: busybox-pvc
+
