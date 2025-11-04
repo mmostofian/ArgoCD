@@ -15,6 +15,10 @@ spec:
       labels:
         app: nginx-busybox
     spec:
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: busybox-pvc
       containers:
       - name: nginx
         image: nginx:latest
@@ -23,3 +27,6 @@ spec:
       - name: busybox
         image: busybox
         command: ["sleep", "3600"]
+        volumeMounts:
+        - mountPath: "/tmp/mojgan"
+          name: task-pv-storage
