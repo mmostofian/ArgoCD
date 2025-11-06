@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   namespace: argotest
   annotations:
+    argocd.argoproj.io/sync-options: Replace=true 
     meta.helm.sh/release-name: loki-stack
     meta.helm.sh/release-namespace: loki-stack
   creationTimestamp: "2025-11-05T15:57:40Z"
