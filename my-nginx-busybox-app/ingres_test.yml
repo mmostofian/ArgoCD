@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: loki-stack-prometheus-server
+  namespace: loki-stack
+  annotations:
+    kubernetes.io/ingress.class: public
+    argocd.argoproj.io/sync-options: Replace=true
+spec:
+  tls:
+    - hosts:
+        - prometheus.sclab.local
+      secretName: prometheus-tls-secret
+  rules:
+    - host: prometheus.sclab.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: loki-stack-prometheus-server
+                port:
+                  number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.13.70.180
