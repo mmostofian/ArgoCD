@@ -16,8 +16,6 @@ metadata:
     release: loki-stack
   name: loki-stack-prometheus-server
   namespace: loki-stack
-  resourceVersion: "2704877"
-  uid: c8408c7b-7834-4a0a-88cc-b5127107d81f
 spec:
   ingressClassName: public
   rules:
