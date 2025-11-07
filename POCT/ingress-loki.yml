@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true 
+    meta.helm.sh/release-name: loki-stack
+    meta.helm.sh/release-namespace: loki-stack
+  creationTimestamp: "2025-11-05T15:57:40Z"
+  generation: 1
+  labels:
+    app: prometheus
+    app.kubernetes.io/managed-by: Helm
+    chart: prometheus-19.7.2
+    component: server
+    heritage: Helm
+    release: loki-stack
+  name: loki-stack-prometheus-server
+  namespace: loki-stack
+spec:
+  ingressClassName: public
+  rules:
+  - host: prometheus.sclab.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: loki-stack-prometheus-server
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.13.70.180
