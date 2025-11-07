@@ -4,7 +4,7 @@ metadata:
   name: poct-deployment
   namespace: argotest  
   labels:
-    app: nginx-busybox
+    app: poct
 spec:
   replicas: 1
   selector:
