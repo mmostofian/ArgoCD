@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: POCT-service
-  namespace: argoPOCT
+  namespace: argotest
 spec:
   selector:
     app: POCT

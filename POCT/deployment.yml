@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: POCT-deployment
-  namespace: argoPOCT
+  namespace: argotest
   labels:
     app: POCT
 spec:
