@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: POCT-deployment
+  name: poct-deployment
   namespace: argotest
   labels:
-    app: POCT
+    app: poct
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: POCT
+      app: poct
   template:
     metadata:
       labels:
-        app: POCT
+        app: poct
     spec:
       volumes:
       - name: task-pv-storage
         persistentVolumeClaim:
-          claimName: POCT-pvc
+          claimName: poct-pvc
       containers:
       - name: nginx
         image: nginx:latest

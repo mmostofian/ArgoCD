@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: POCT-ingress
+  name: poct-ingress
   namespace: argotest
   annotations:
     kubernetes.io/ingress.class: nginx
