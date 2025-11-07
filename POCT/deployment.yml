@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: POCT-deployment
+  namespace: argoPOCT
+  labels:
+    app: POCT
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: POCT
+  template:
+    metadata:
+      labels:
+        app: POCT
+    spec:
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: POCT-pvc
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+      - name: busybox
+        image: busybox
+        command: ["sleep", "3600"]
+        volumeMounts:
+        - mountPath: "/tmp/mojgan"
+          name: task-pv-storage
