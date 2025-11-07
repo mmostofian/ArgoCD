@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-busybox-deployment
+  name: poct-deployment
   namespace: argotest  
   labels:
     app: nginx-busybox
@@ -9,16 +9,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-busybox
+      app: poct
   template:
     metadata:
       labels:
-        app: nginx-busybox
+        app: poct
     spec:
       volumes:
       - name: task-pv-storage
         persistentVolumeClaim:
-          claimName: busybox-pvc
+          claimName: poct-pvc
       containers:
       - name: nginx
         image: nginx:latest
