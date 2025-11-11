@@ -5,5 +5,4 @@ metadata:
 data:
   APP_MODE: {{ .Values.config.appMode | quote }}
   LOG_LEVEL: {{ .Values.config.logLevel | quote }}
-  FOO: {{ .Values.config.foo | quote }}   
-
+  FOO: {{ .Values.config.foo | quote }}
