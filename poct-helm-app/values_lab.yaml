@@ -92,3 +92,21 @@ secret:
   dbPassword: "myStrongPassword"
   apiKey: "abcdef123456"
   fooSecret: "bar"
+
+# MySQL Dependency Configuration
+mysql:
+  auth:
+    rootPassword: "rootPass123"
+    username: "poctuser"
+    password: "poctpass"
+    database: "poctdb"
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+  fullnameOverride: "poct-mysql"
+
+
+
+
+
