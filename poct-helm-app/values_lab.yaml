@@ -95,6 +95,7 @@ secret:
 
 # ===== Redis Dependency Configuration =====
 redis:
+  enabled: false
   architecture: standalone
   auth:
     enabled: true
