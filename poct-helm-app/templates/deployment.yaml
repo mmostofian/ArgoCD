@@ -21,12 +21,19 @@ spec:
       serviceAccountName: {{ include "poct.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+      - name: webcontent-volume
+        configMap:
+          name: {{ include "poct.fullname" . }}-webcontent
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
+          volumeMounts:
+          - name: webcontent-volume
+            mountPath: /usr/share/nginx/html
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
