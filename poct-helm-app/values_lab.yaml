@@ -92,29 +92,26 @@ secret:
   dbPassword: "myStrongPassword"
   apiKey: "abcdef123456"
   fooSecret: "bar"
-  # MySQL Dependency Configuration
-mysql:
+
+# ===== Redis Dependency Configuration =====
+redis:
   architecture: standalone
   auth:
-    rootPassword: "rootpass123"
-    username: "poctuser"
-    password: "poctpass123"
-    database: "poctdb"
+    enabled: true
+    password: "redispass123"
 
-  primary:
+  master:
     persistence:
       enabled: true
-      accessModes:
-      - ReadWriteOnce
       size: 1Gi
       storageClass: "ceph-rbd"
-  
 
   resources:
     requests:
-      memory: 512Mi
-      cpu: 250m
+      memory: 256Mi
+      cpu: 100m
 
+  
 
 
 
