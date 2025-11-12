@@ -6,7 +6,7 @@ type: application
 version: 0.1.0
 
 dependencies:
-  - name: cloudnative-pg
-    version: v0.26.1
-    repository: "https://cloudnative-pg.github.io/charts"
+  - name: redis
+    version: 18.19.4   
+    repository: https://charts.bitnami.com/bitnami
     
