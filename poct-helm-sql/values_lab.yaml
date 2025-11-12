@@ -94,14 +94,6 @@ secret:
   fooSecret: "bar"
 
 
-# PVC Configuration
-pvc:
-  enabled: true
-  storageClassName: "ceph-rbd"
-  accessModes:
-    - ReadWriteOnce
-  size: 1Gi
-
 # MySQL Dependency Configuration
 mysql:
   architecture: standalone
@@ -115,7 +107,7 @@ mysql:
     persistence:
       enabled: true
       size: 1Gi
-      storageClass: local-path 
+      storageClass: ceph-rbd
 
   resources:
     requests:
