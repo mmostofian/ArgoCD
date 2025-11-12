@@ -105,7 +105,7 @@ mysql:
 
   primary:
     persistence:
-      enabled: true
+      enabled: false
       size: 1Gi
       storageClass: standard
 
