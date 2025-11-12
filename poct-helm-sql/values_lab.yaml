@@ -105,7 +105,7 @@ mysql:
 
   primary:
     persistence:
-      enabled: false
+      enabled: true
       size: 1Gi
       storageClass: ceph-rbd
 
