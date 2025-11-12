@@ -92,6 +92,26 @@ secret:
   dbPassword: "myStrongPassword"
   apiKey: "abcdef123456"
   fooSecret: "bar"
+  # MySQL Dependency Configuration
+mysql:
+  architecture: standalone
+  auth:
+    rootPassword: "rootpass123"
+    username: "poctuser"
+    password: "poctpass123"
+    database: "poctdb"
+
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+      storageClassName: ceph-rbd
+  
+
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: 250m
 
 
 
