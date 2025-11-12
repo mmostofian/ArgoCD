@@ -107,7 +107,7 @@ mysql:
     persistence:
       enabled: true
       size: 1Gi
-      storageClass: ceph-rbd
+      storageClass: standard
 
   resources:
     requests:
