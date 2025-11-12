@@ -104,8 +104,10 @@ mysql:
   primary:
     persistence:
       enabled: true
+      accessModes:
+      - ReadWriteOnce
       size: 1Gi
-      storageClass: ceph-rbd
+      storageClass: "ceph-rbd"
   
 
   resources:
