@@ -104,16 +104,23 @@ pvc:
 
 # MySQL Dependency Configuration
 mysql:
+  architecture: standalone
   auth:
-    rootPassword: "rootPass123"
+    rootPassword: "rootpass123"
     username: "poctuser"
-    password: "poctpass"
+    password: "poctpass123"
     database: "poctdb"
+
   primary:
     persistence:
       enabled: true
       size: 1Gi
-  fullnameOverride: "poct-mysql"
+      storageClass: local-path 
+
+  resources:
+    requests:
+      memory: 512Mi
+      cpu: 250m
 
 
 
