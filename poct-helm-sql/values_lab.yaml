@@ -97,7 +97,7 @@ secret:
 # PVC Configuration
 pvc:
   enabled: true
-  storageClassName: ""
+  storageClassName: "ceph-rbd"
   accessModes:
     - ReadWriteOnce
   size: 1Gi
