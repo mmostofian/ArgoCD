@@ -94,34 +94,6 @@ secret:
   fooSecret: "bar"
 
 
-# PVC Configuration
-pvc:
-  enabled: true
-  storageClassName: ""
-  accessModes:
-    - ReadWriteOnce
-  size: 1Gi
-
-# MySQL Dependency Configuration
-mysql:
-  architecture: standalone
-  auth:
-    rootPassword: "rootpass123"
-    username: "poctuser"
-    password: "poctpass123"
-    database: "poctdb"
-
-  primary:
-    persistence:
-      enabled: true
-      size: 1Gi
-      storageClass: local-path 
-
-  resources:
-    requests:
-      memory: 512Mi
-      cpu: 250m
-
 
 
 
