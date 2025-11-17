@@ -7,7 +7,7 @@ data:
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Hello Mojgan, welcome to nginx!</title>
+        <title>Hello Daniel, this is updated!</title>
         <style>
             body {
                 width: 35em;
@@ -17,9 +17,9 @@ data:
         </style>
       </head>
       <body>
-        <h1>Hello Mojgan, welcome to nginx!</h1>
-        <p>If you see this page, the nginx web server is successfully installed and
-        working. Further configuration is required.</p>
+        <h1>Hello Daniel, welcome back to nginx! this isupdated </h1>
+        <p>If you see this page, the nginx web server is successfully updated and
+        working. This line was changed to test the ConfigMap.</p>
         
         <p>For online documentation and support please refer to
         <a href="http://nginx.org/">nginx.org</a>.<br/>
