@@ -52,7 +52,7 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls:
-  - secretName: sec-tls
+  - secretName: my-tls-secret
     hosts:
     - nginx.monitoring-sclab.org
 
