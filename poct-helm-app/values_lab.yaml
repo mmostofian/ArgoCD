@@ -114,6 +114,8 @@ redis:
 # SealedSecrets values (encrypted values here)
 sealedSecrets:
   enabled: true
+  name: {{ include "poct.fullname" . }}-secret
+  namespace: {{ .Release.Namespace }}           
 
   apiKey: ""        # encrypted API key (optional)
   dbPassword: ""    # encrypted DB password (optional)
