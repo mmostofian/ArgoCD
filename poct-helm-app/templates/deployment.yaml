@@ -23,9 +23,9 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-      - name: webcontent-volume
-        configMap:
-          name: {{ include "poct.fullname" . }}-webcontent
+        - name: webcontent-volume
+          configMap:
+            name: {{ include "poct.fullname" . }}-webcontent
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -33,8 +33,8 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           volumeMounts:
-          - name: webcontent-volume
-            mountPath: /usr/share/nginx/html
+            - name: webcontent-volume
+              mountPath: /usr/share/nginx/html
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -44,8 +44,6 @@ spec:
                 name: {{ include "poct.fullname" . }}-config
             - secretRef:
                 name: {{ include "poct.fullname" . }}-secret
- 
-          #  Add Redis Connection
           env:
             - name: REDIS_HOST
               value: "{{ .Release.Name }}-redis-master"
