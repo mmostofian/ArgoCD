@@ -114,11 +114,6 @@ redis:
 # SealedSecrets values (encrypted values here)
 sealedSecrets:
   enabled: true
-       
-
-  apiKey: ""        # encrypted API key (optional)
-  dbPassword: ""    # encrypted DB password (optional)
-  fooSecret: ""     # encrypted extra secret (optional)
 
   tls:
     crt: |
