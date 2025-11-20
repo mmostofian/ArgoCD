@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "poct.fullname" . }}
-  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "poct.labels" . | nindent 4 }}
 spec:
