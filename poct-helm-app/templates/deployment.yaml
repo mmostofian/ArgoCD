@@ -44,7 +44,7 @@ spec:
                 name: {{ include "poct.fullname" . }}-config
             - secretRef:
                 #name: {{ include "poct.fullname" . }}-secret
-                name: {{ .Values.sealedSecrets.secretName }}
+                name: helm-poct-secret
 
  
           #  Add Redis Connection
