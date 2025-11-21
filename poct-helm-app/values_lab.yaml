@@ -3,7 +3,17 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+apps:
+  - name: helm-poct
+    namespace: argotest
+    replicaCount: 3
+    ingressHost: nginx1.monitoring-sclab.org
+
+  - name: helm-pact
+    namespace: pact
+    replicaCount: 2
+    ingressHost: nginx2.monitoring-sclab.org
+
 
 image:
   repository: nginx
