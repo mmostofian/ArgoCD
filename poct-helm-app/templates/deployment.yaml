@@ -43,9 +43,8 @@ spec:
             - configMapRef:
                 name: {{ include "poct.fullname" . }}-config
             - secretRef:
-                #name: {{ include "poct.fullname" . }}-secret
-                name: helm-poct-secret
-
+                name: {{ include "poct.fullname" . }}-secret
+               
  
           #  Add Redis Connection
           env:
