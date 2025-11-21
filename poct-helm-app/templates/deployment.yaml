@@ -43,7 +43,9 @@ spec:
             - configMapRef:
                 name: {{ include "poct.fullname" . }}-config
             - secretRef:
-                name: {{ include "poct.fullname" . }}-secret
+                #name: {{ include "poct.fullname" . }}-secret
+                name: {{ .Values.sealedSecrets.secretName }}
+
  
           #  Add Redis Connection
           env:
