@@ -110,9 +110,10 @@ redis:
   resources:
     requests:
       memory: 256Mi
-      cpu: 100m
+      cpu: 100m    
 # SealedSecrets values (encrypted values here)
 sealedSecrets:
+  name: shared-secret
   enabled: true
   
   apiKey: ""        # encrypted API key (optional)
