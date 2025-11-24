@@ -115,7 +115,7 @@ redis:
 # SealedSecrets values (encrypted values here)
 sealedSecrets:
   enabled: true
-  secretName: helm-poct-secret
+  secretName: helm-pact-secret
   
   apiKey: ""        # encrypted API key (optional)
   dbPassword: ""    # encrypted DB password (optional)
