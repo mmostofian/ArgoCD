@@ -55,7 +55,7 @@ spec:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-redis"
+                  name: "{{ include "poct.fullname" . }}-redis-secret"
                   key: redis-password
           livenessProbe:
             httpGet:
