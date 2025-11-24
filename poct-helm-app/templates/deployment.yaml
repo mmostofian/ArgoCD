@@ -49,13 +49,13 @@ spec:
           #  Add Redis Connection
           env:
             - name: REDIS_HOST
-              value: {{ .Values.redis.host }}
+              value: "{{ .Release.Name }}-redis-master"
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.redis.secretName }}
+                  name: "{{ .Release.Name }}-redis"
                   key: redis-password
           livenessProbe:
             httpGet:
