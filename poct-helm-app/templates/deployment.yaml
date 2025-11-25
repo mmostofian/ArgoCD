@@ -43,7 +43,7 @@ spec:
             - configMapRef:
                 name: {{ include "poct.fullname" . }}-config
             - secretRef:
-                 name: {{ .Release.Name }}-secret
+                name: {{ include "poct.fullname" . }}-secret
                
  
           #  Add Redis Connection
