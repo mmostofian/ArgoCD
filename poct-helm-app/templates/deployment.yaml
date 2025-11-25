@@ -14,14 +14,9 @@ spec:
     metadata:
       labels:
         {{- include "poct.selectorLabels" . | nindent 8 }}
-      annotations:
-      {{- if or .Values.podAnnotations .Values.syncWave }}
       {{- with .Values.podAnnotations }}
-      {{- toYaml . | nindent 6 }}
-      {{- end }}
-      {{- if .Values.syncWave }}
-      argocd.argoproj.io/sync-wave: "{{ .Values.syncWave }}"
-      {{- end }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
       serviceAccountName: {{ include "poct.serviceAccountName" . }}
