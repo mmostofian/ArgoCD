@@ -16,8 +16,12 @@ spec:
         {{- include "poct.selectorLabels" . | nindent 8 }}
       {{- with .Values.podAnnotations }}
       annotations:
+        {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+        {{- end }}
+        {{- if .Values.syncWave }}
+        argocd.argoproj.io/sync-wave: "{{ .Values.syncWave }}"
+        {{- end }}
     spec:
       serviceAccountName: {{ include "poct.serviceAccountName" . }}
       securityContext:
