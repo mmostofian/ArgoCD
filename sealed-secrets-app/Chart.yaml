@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sealed-secrets-app
+description: Helm chart to manage Sealed Secrets Controller
+type: application
+version: 1.0.0
+appVersion: "2.6.2"  
