@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sealed-secrets-controller
-  namespace: kube-system
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: sealed-secrets-controller
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: sealed-secrets-controller
@@ -15,6 +17,9 @@ spec:
     spec:
       serviceAccountName: sealed-secrets-controller
       containers:
-        - name: controller
-          image: bitnami/sealed-secrets-controller:2.6.2
+      - name: controller
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        args:
+        - controller
+
 
