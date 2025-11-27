@@ -3,10 +3,8 @@ kind: Deployment
 metadata:
   name: sealed-secrets-controller
   namespace: kube-system
-  labels:
-    app: sealed-secrets-controller
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: sealed-secrets-controller
@@ -17,6 +15,6 @@ spec:
     spec:
       serviceAccountName: sealed-secrets-controller
       containers:
-      - name: controller
-        image: bitnami/sealed-secrets-controller:2.6.2
-        imagePullPolicy: IfNotPresent
+        - name: controller
+          image: bitnami/sealed-secrets-controller:2.6.2
+
