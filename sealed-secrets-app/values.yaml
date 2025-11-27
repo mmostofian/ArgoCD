@@ -1,5 +1,7 @@
-namespace: kube-system
-replicaCount: 1
-image:
-  repository: bitnami/sealed-secrets
-  tag: "2.6.2"
+apiVersion: v2
+name: sealed-secrets-app
+description: Helm chart for Sealed Secrets Controller
+type: application
+version: 0.1.0
+appVersion: "2.6.2"
+
