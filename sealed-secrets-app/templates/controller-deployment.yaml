@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
-  namespace: kube-system
+  namespace: {{ .namespace }}
   labels:
     app: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
 spec:
