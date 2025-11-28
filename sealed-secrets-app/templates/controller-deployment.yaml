@@ -1,25 +1,23 @@
-{{- if .Values.sealedSecretsController.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.sealedSecretsController.nameOverride }}
-  namespace: {{ .Values.sealedSecretsController.namespace }}
+  name: sealed-secrets-controller
+  namespace: kube-system
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.sealedSecretsController.nameOverride }}
+      app: sealed-secrets-controller
   template:
     metadata:
       labels:
-        app: {{ .Values.sealedSecretsController.nameOverride }}
+        app: sealed-secrets-controller
     spec:
-      serviceAccountName: {{ .Values.sealedSecretsController.nameOverride }}
+      serviceAccountName: sealed-secrets-controller
       containers:
-      - name: sealed-secrets-controller
-        image: ghcr.io/bitnami/sealed-secrets-controller:latest
-        imagePullPolicy: IfNotPresent
-{{- end }}
+        - name: sealed-secrets-controller
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: IfNotPresent
 
 
 
