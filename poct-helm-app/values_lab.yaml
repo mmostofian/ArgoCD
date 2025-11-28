@@ -113,10 +113,9 @@ redis:
       memory: 256Mi
       cpu: 100m    
 # SealedSecrets values (encrypted values here)
-sealedSecretsController:
-  enabled: false 
+
 sealedSecrets:
-  enabled: false
+  enabled: true
   secretName: helm-pact-secret
   
   apiKey: ""        # encrypted API key (optional)
