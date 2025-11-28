@@ -1,14 +1,6 @@
-{{- if .Values.sealedSecretsController.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: sealed-secrets-controller
-subjects:
   - kind: ServiceAccount
-    name: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
-    namespace: {{ .Release.Namespace }}
-{{- end }}
+    name: sealed-secrets-controller
+    namespace: kube-system
