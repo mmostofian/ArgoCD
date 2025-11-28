@@ -1,16 +1,10 @@
-deployments:
-  - nameSuffix: poct
-    namespace: kube-system
-    replicaCount: 1
-    image:
-      repository: bitnami/sealed-secrets-controller
-      tag: "0.28.0"
-  - nameSuffix: pact
-    namespace: kube-system
-    replicaCount: 1
-    image:
-      repository: bitnami/sealed-secrets-controller
-      tag: "0.28.0"
+replicaCount: 1
+image:
+  repository: bitnami/sealed-secrets-controller
+  tag: "0.28.0"
+  pullPolicy: IfNotPresent
+namespace: kube-system
+fullnameOverride: sealed-secrets-controller
 
 
 
