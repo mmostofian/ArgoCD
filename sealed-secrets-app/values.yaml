@@ -1,9 +1,8 @@
 namespace: kube-system
-
-image:
-  repository: bitnami/sealed-secrets-controller
-  tag: "v0.25.0"
-
 replicaCount: 1
+image:
+  repository: bitnami/sealed-secrets
+  tag: "2.6.2"
+
 
 
