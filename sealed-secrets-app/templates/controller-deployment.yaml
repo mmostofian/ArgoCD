@@ -1,24 +1,25 @@
+{{- range .Values.deployments }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sealed-secrets-controller
-  namespace: {{ .Values.namespace }}
+  name: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
+  namespace: kube-system
   labels:
-    app: sealed-secrets-controller
+    app: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app: sealed-secrets-controller
+      app: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
   template:
     metadata:
       labels:
-        app: sealed-secrets-controller
+        app: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
     spec:
-      serviceAccountName: sealed-secrets-controller
+      serviceAccountName: {{ include "sealed-secrets-chart.fullname" $ }}-{{ .nameSuffix }}
       containers:
         - name: sealed-secrets-controller
-          image: bitnami/sealed-secrets-controller:latest
+          image: {{ .image.repository }}:{{ .image.tag }}
           imagePullPolicy: IfNotPresent
           args:
             - "--key-prefix=sealed-secrets-key"
@@ -36,4 +37,4 @@ spec:
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
-      restartPolicy: Always
+{{- end }}
