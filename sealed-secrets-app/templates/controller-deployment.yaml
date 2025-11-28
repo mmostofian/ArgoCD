@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sealed-secrets-controller
+annotations:
+  name: {{ include "poct.fullname" . }}
   namespace: kube-system
 spec:
   replicas: {{ .Values.replicaCount }}
