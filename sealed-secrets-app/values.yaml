@@ -1,7 +1,6 @@
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""namespace: kube-system
-replicaCount: 1
+namespace: kube-system
+replicaCount: 2
+
 
 
 
