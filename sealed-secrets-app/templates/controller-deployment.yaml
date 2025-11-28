@@ -17,9 +17,23 @@ spec:
     spec:
       serviceAccountName: sealed-secrets-controller
       containers:
-      - name: controller
-        image: registry.k8s.io/sealed-secrets-controller/controller:v0.26.2
-        args:
-        - controller
-
-
+        - name: sealed-secrets-controller
+          image: bitnami/sealed-secrets-controller:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - "--key-prefix=sealed-secrets-key"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      restartPolicy: Always
