@@ -116,7 +116,7 @@ redis:
 sealedSecretsController:
   enabled: false 
 sealedSecrets:
-  enabled: true
+  enabled: false
   secretName: helm-pact-secret
   
   apiKey: ""        # encrypted API key (optional)
