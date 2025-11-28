@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
 annotations:
   name: {{ include "ssc.fullname" . }}
-  namespace: kube-system
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
