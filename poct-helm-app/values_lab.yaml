@@ -132,7 +132,7 @@ sealedSecrets:
 sealedSecretsController:
   enabled: true
   namespace: kube-system         
-  nameOverride: " helm-poct-sealed-secret"               
+  nameOverride: helm-poct-sealed-secret            
   image:
     repository: quay.io/bitnami/sealed-secrets-controller
     tag: 0.26.2
