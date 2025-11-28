@@ -2,6 +2,7 @@ replicaCount: 1
 
 nameOverride: ""
 fullnameOverride: ""
+namespace: kube-system
 
 image:
   repository: bitnami/sealed-secrets-controller
