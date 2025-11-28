@@ -1,20 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: {{ include "ssc.fullname" . }}
-  namespace: {{ .Release.Namespace }}
-spec:
-  replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: sealed-secrets-controller
-  template:
-    metadata:
-      labels:
-        app: sealed-secrets-controller
-    spec:
-      serviceAccountName: sealed-secrets-controller
-      containers:
-        - name: sealed-secrets-controller
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: IfNotPresent
+  name: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: sealed-secrets-controller
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
+    namespace: {{ .Release.Namespace }}
+
+
