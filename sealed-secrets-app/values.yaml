@@ -2,9 +2,13 @@ replicaCount: 1
 image:
   repository: bitnami/sealed-secrets-controller
   tag: "0.28.0"
-  pullPolicy: IfNotPresent
-namespace: kube-system
-fullnameOverride: sealed-secrets-controller
+
+sealedSecretsController:
+  enabled: true   
+sealedSecrets:
+  enabled: true
+  secretName: sealed-secrets-controller-secret
+
 
 
 
