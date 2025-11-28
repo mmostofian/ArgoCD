@@ -1,17 +1,26 @@
 {{- if .Values.sealedSecretsController.enabled }}
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{ default "sealed-secrets-controller" .Values.sealedSecretsController.nameOverride }}
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: sealed-secrets-controller
-subjects:
-  - kind: ServiceAccount
-    name: {{ default "sealed-secrets-controller" .Values.sealedSecretsController.nameOverride }}
-    namespace: {{ .Values.sealedSecretsController.namespace }}
+  namespace: {{ .Values.sealedSecretsController.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ default "sealed-secrets-controller" .Values.sealedSecretsController.nameOverride }}
+  template:
+    metadata:
+      labels:
+        app: {{ default "sealed-secrets-controller" .Values.sealedSecretsController.nameOverride }}
+    spec:
+      serviceAccountName: {{ default "sealed-secrets-controller" .Values.sealedSecretsController.nameOverride }}
+      containers:
+        - name: sealed-secrets-controller
+          image: "ghcr.io/bitnami/sealed-secrets-controller:latest"
+          imagePullPolicy: IfNotPresent
 {{- end }}
+
 
 
 
