@@ -1,10 +1,9 @@
+{{- if .Values.sealedSecretsController.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sealed-secrets-controller
-  namespace: {{ .Values.namespace }}
-  labels:
-    app: sealed-secrets-controller
+  namespace: kube-system
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -18,22 +17,6 @@ spec:
       serviceAccountName: sealed-secrets-controller
       containers:
         - name: sealed-secrets-controller
-          image: bitnami/sealed-secrets-controller:latest
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: IfNotPresent
-          args:
-            - "--key-prefix=sealed-secrets-key"
-          ports:
-            - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
-      restartPolicy: Always
+{{- end }}
