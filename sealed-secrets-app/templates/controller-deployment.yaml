@@ -1,20 +1,21 @@
+{{- if .Values.sealedSecretsController.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "ssc.fullname" . }}
+  name: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app: sealed-secrets-controller
+      app: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
   template:
     metadata:
       labels:
-        app: sealed-secrets-controller
+        app: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
     spec:
-      serviceAccountName: sealed-secrets-controller
+      serviceAccountName: {{ .Values.sealedSecretsController.nameOverride | default "sealed-secrets-controller" }}
       containers:
-        - name: sealed-secrets-controller
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          imagePullPolicy: IfNotPresent
+        - name: controller
+          image: ghcr.io/bitnami/sealed-secrets-controller:latest
+{{- end }}
