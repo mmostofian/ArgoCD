@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
 annotations:
-  name: {{ include "poct.fullname" . }}
+  name: {{ include "ssc.fullname" . }}
   namespace: kube-system
 spec:
   replicas: {{ .Values.replicaCount }}
