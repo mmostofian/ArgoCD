@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: sealed-secrets-controller
+        name: sealed-secrets-controller
     spec:
       serviceAccountName: sealed-secrets-controller
       containers:
