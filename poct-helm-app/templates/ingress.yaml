@@ -33,7 +33,7 @@ spec:
         {{- range .hosts }}
         - {{ . | quote }}
         {{- end }}
-      secretName: {{ .secretName }}
+      secretName: {{ include "poct.fullname" . }}-server-tls
     {{- end }}
   {{- end }}
   rules:
