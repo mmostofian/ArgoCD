@@ -1,5 +1,0 @@
-replicaCount: 1
-image:
-  repository: mariadb/enterprise-operator
-  tag: latest
-  pullPolicy: IfNotPresent

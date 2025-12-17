@@ -1,9 +1,0 @@
-apiVersion: v2
-name: mariadb-operator
-description: Helm chart for MariaDB Operator
-version: 0.1.0
-appVersion: "1.0"
-dependencies:
-  - name: mariadb-operator-crds
-    version: 0.1.0
-    repository: "file://../mariadb-operator-crds"
