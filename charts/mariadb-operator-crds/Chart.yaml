@@ -1,0 +1,5 @@
+apiVersion: v2
+name: mariadb-operator-crds
+description: MariaDB Operator CRDs
+version: 0.1.0
+type: application
