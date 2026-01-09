@@ -6,8 +6,8 @@ type: application
 version: 0.1.0
 
 dependencies:
-- name: redis-enterprise
+- name: redis
   condition: redis.enabled
-  version: 2.7.0
-  repository: https://helm.redis.io
+  version: 17.10.1
+  repository: https://charts.truecharts.org/
     
