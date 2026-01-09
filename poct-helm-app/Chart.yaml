@@ -8,6 +8,6 @@ version: 0.1.0
 dependencies:
 - name: redis
   condition: redis.enabled
-  version: 4.0.3
-  repository: https://charts.cloudpirates.dev
+  version: 0.0.3
+  repository: https://charts.pascaliske.dev
     
