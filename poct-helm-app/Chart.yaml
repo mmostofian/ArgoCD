@@ -8,6 +8,6 @@ version: 0.1.0
 dependencies:
 - name: redis
   condition: redis.enabled
-  version: 0.0.3
-  repository: https://charts.pascaliske.dev
+  version: 2.7.0
+  repository: https://helm.redis.io
     
