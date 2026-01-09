@@ -8,6 +8,6 @@ version: 0.1.0
 dependencies:
 - name: redis
   condition: redis.enabled
-  version: 0.20.5
-  repository: https://charts.cloudpirates.io
+  version: latest
+  repository: https://helm.redis.io
     
