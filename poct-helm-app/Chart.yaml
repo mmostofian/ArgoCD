@@ -9,5 +9,5 @@ dependencies:
 - name: redis
   condition: redis.enabled
   version: 0.1.0   
-  repository: "https://github.com/CloudPirates-io/helm-charts/tree/main/charts"
+  repository:  oci://ghcr.io/cloudpirates-io/helm-charts
     
