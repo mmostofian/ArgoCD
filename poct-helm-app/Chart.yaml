@@ -6,8 +6,8 @@ type: application
 version: 0.1.0
 
 dependencies:
-- name: redis-enterprise-operator
+- name: redis
   condition: redis.enabled
-  version: 8.0.6-8
-  repository: https://helm.redis.io
+  version: 0.1.0   
+  repository: "https://github.com/CloudPirates-io/helm-charts/tree/main/charts"
     
