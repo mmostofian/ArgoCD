@@ -97,7 +97,7 @@ secret:
 # ===== Redis Dependency Configuration =====
 redis:
   enabled: true
-  architecture: standalone
+  architecture: "standalone"
   auth:
     enabled: true
     password: "redispass123"
@@ -107,7 +107,8 @@ redis:
       enabled: true
       size: 1Gi
       storageClass: "ceph-rbd"
-
+      accessModes:
+        - ReadWriteOnce
   resources:
     requests:
       memory: 256Mi
