@@ -6,8 +6,8 @@ type: application
 version: 0.1.0
 
 dependencies:
-- name: redis-enterprise-operator
-  condition: redis.enabled
-  version: 8.0.6-8
-  repository: https://helm.redis.io
+- name: redis-ha
+  condition: redisHa.enabled
+  version: 4.26.1
+  repository:  https://dandydeveloper.github.io/charts
     
