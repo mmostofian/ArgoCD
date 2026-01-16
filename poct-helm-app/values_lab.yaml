@@ -81,7 +81,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity:
- podAntiAffinity:
+  podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchLabels:
@@ -94,7 +94,6 @@ affinity:
             matchLabels:
               app: redis-ha
           topologyKey: kubernetes.io/hostname
-
 
 # ===== ConfigMap =====
 config:
