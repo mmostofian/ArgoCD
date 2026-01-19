@@ -1,4 +1,6 @@
-
+global:
+  imageRegistry: registry.monitoring-sclab.org/softisticated/development/pact
+  imagePullPolicy: IfNotPresent
 # Default values for poct.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -7,11 +9,8 @@ replicaCount: 2
 
 image:
   repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.17.0"
 
-imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
@@ -80,16 +79,7 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity:
-  podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 100
-        podAffinityTerm:
-          labelSelector:
-            matchLabels:
-              app: redis-ha
-          topologyKey: kubernetes.io/hostname
-
+affinity: {}
 
 # ===== ConfigMap =====
 config:
@@ -105,17 +95,20 @@ secret:
 
 # ===== Redis Dependency Configuration =====
 redis:
-  enabled: true
-  architecture: "standalone"
-  auth:
-    enabled: true
-    password: "redispass123"
+  enabled: false
+redis-ha:
+  image:
+    reposistory: registry.monitoring-sclab.org/softisticated/development/pact/redis
+    tag: 8.2.1-alpine
+  replicas: 2
+  architecture: standalone
 
   master:
     persistence:
       enabled: true
       size: 1Gi
       storageClass: "ceph-rbd"
+
   resources:
     requests:
       memory: 256Mi
@@ -144,4 +137,3 @@ sealedSecretsController:
   image:
     repository: quay.io/bitnami/sealed-secrets-controller
     tag: 0.26.2
-
